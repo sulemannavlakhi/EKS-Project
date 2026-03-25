@@ -1,0 +1,6 @@
+sass-cache/
+terraform.tfvars
+.tfstate
+.terraform
+.terraform.lock.hcl
+errored.tfstate
