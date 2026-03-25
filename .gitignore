@@ -1,6 +1,8 @@
 sass-cache/
 terraform.tfvars
-.tfstate
+*.tfstate
+*.tfstate.*
 .terraform
 .terraform.lock.hcl
 errored.tfstate
+
