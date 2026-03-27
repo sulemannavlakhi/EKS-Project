@@ -16,3 +16,16 @@ terraform {
     encrypt      = true
   }
 }
+
+provider "aws" {
+  region = "ca-central-1"
+
+  default_tags {
+    tags = {
+      Environment = "dev"
+      Project     = "2048-game"
+      ManagedBy   = "terraform"
+      Owner       = "suleman"
+    }
+  }
+}
