@@ -12,4 +12,13 @@ module "vpc" {
   cidr_ipv4                              = var.cidr_ipv4
 
 }
+
+module "eks" {
+  source = "./modules/eks"
+
+  subnet_public1_id                      = module.vpc.public_subnet1_id
+  subnet_public2_id                      = module.vpc.public_subnet2_id
+  subnet_private1_id                     = module.vpc.private_subnet1_id
+  subnet_private2_id                     = module.vpc.private_subnet2_id
+}
     
