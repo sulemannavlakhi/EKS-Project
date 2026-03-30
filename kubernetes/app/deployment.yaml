@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app-deployment
+  labels:
+    app: 2048-game
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: 2048-game
+  template:
+    metadata:
+      labels:
+        app: 2048-game
+    spec:
+      containers:
+      - name: 2048-game
+        image: 012525608560.dkr.ecr.ca-central-1.amazonaws.com/eks-project:latest
+        ports:
+        - containerPort: 80
+        securityContext:
+         runAsNonRoot: true
+         runAsUser: 100
+         runAsGroup: 102
+         allowPrivilegeEscalation: false
+         capabilities:
+           drop:
+           - ALL
