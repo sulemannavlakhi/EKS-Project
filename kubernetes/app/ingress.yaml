@@ -1,18 +1,25 @@
-# complete after infra
-
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: ingress
+  name: app-ingress
+  namespace: default
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-route53
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
 spec:
-  ingressClassName: 2048-game-ingress
+  ingressClassName: nginx
+  tls:
+  - hosts:
+      - eks.sulemannav.com
+    secretName: app-tls
   rules:
-  - http:
+  - host: eks.sulemannav.com
+    http:
       paths:
-      - path: /testpath
+      - path: /
         pathType: Prefix
         backend:
           service:
-            name: test
+            name: app-service
             port:
               number: 80
