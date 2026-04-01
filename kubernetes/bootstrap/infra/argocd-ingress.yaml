@@ -4,10 +4,11 @@ metadata:
   name: argocd-ingress
   namespace: argocd
   annotations:
-   traefik.ingress.kubernetes.io/router.entrypoints: websecure
-   cert-manager.io/cluster-issuer: letsencrypt-route53
+    cert-manager.io/cluster-issuer: letsencrypt-route53
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
 spec:
-  ingressClassName: traefik
+  ingressClassName: nginx
   tls:
   - hosts:
       - argocd.sulemannav.com
