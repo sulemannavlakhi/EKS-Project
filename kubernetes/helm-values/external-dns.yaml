@@ -15,7 +15,7 @@ spec:
         aws:
           region: ca-central-1
         domainFilters:
-          - eks.sulemannav.com
+          - sulemannav.com
         policy: upsert-only
         serviceAccount:
           annotations:
