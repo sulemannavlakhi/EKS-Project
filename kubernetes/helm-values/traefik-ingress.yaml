@@ -21,6 +21,10 @@ spec:
         ingressClass:
           enabled: true
           isDefaultClass: true
+        ports:
+          websecure:
+            tls:
+              enabled: false
   destination:
     server: https://kubernetes.default.svc
     namespace: traefik
