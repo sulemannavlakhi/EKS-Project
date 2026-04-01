@@ -5,10 +5,10 @@ metadata:
   namespace: default
   annotations:
     external-dns.alpha.kubernetes.io/hostname: eks.sulemannav.com
-    traefik.ingress.kubernetes.io/router.entrypoints: websecure
     cert-manager.io/cluster-issuer: letsencrypt-route53
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
 spec:
-  ingressClassName: traefik
+  ingressClassName: nginx
   tls:
   - hosts:
       - eks.sulemannav.com
