@@ -22,6 +22,8 @@ spec:
             namespaces:
               - default
               - traefik
+              - argocd
+              - monitoring
         ingressClass:
           enabled: true
           isDefaultClass: true
