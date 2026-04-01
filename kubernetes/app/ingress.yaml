@@ -4,6 +4,7 @@ metadata:
   name: app-ingress
   namespace: default
   annotations:
+    external-dns.alpha.kubernetes.io/hostname: eks.sulemannav.com
     traefik.ingress.kubernetes.io/router.entrypoints: websecure
     traefik.ingress.kubernetes.io/router.tls: "true"
     cert-manager.io/cluster-issuer: letsencrypt-route53
