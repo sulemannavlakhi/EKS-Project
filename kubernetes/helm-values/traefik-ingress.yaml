@@ -18,13 +18,12 @@ spec:
         providers:
           kubernetesIngress:
             enabled: true
+            allowExternalNameServices: true
         ingressClass:
           enabled: true
           isDefaultClass: true
-        ports:
-          websecure:
-            tls:
-              enabled: false
+        globalArguments:
+          - "--providers.kubernetesingress.ingressclass=traefik"
   destination:
     server: https://kubernetes.default.svc
     namespace: traefik
