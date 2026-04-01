@@ -13,5 +13,3 @@ spec:
         route53:
           region: ca-central-1        
           hostedZoneID: Z0688671211B8ZV4AN3YJ
-          serviceAccountAnnotations:
-            eks.amazonaws.com/role-arn: arn:aws:iam::012525608560:role/cert-manager-role
