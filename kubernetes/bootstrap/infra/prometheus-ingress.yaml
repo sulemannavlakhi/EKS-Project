@@ -20,6 +20,6 @@ spec:
         pathType: Prefix
         backend:
           service:
-            name: prometheus-kube-prometheus-prometheus
+            name: prometheus-grafana-kube-pr-prometheus
             port:
               number: 9090
