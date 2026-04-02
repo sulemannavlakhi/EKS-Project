@@ -42,7 +42,7 @@ This project deploys a 2048 game application using Kubernetes, Docker, Terraform
 
 ## 
 
-![Grafana Login](images/grafana-login.png)
+![Grafana Dash](images/grafana-dash.png)
 
 ## Prometheus Monitoring 
 
