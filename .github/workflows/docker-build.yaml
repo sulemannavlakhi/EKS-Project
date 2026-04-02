@@ -1,0 +1,39 @@
+name: Build and Push Docker image
+
+on: 
+  push:
+    branches:
+     - main
+  workflow_dispatch:
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+
+    permissions:
+      id-token: write
+      contents: read
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v6.0.0
+        with:
+         aws-region: ${{ secrets.AWS_REGION }}
+         role-to-assume: ${{ secrets.AWS_CRED }}
+         role-session-name: 2048-game-build
+
+      - name: Login to Amazon ECR
+        id: login-ecr
+        uses: aws-actions/amazon-ecr-login@v2
+
+      - name: Build, tag, and push docker image to Amazon ECR
+        env:
+          REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+          REPOSITORY: ${{ secrets.ECR_REPO }}
+          IMAGE_TAG: ${{ github.sha }}
+        run: |
+          docker build -t $REGISTRY/$REPOSITORY:$IMAGE_TAG -f ./app/Dockerfile ./app
+          docker push $REGISTRY/$REPOSITORY:$IMAGE_TAG 
