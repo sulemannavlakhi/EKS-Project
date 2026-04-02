@@ -107,7 +107,7 @@ resource "aws_route_table_association" "private_subnet2" {
 
 resource "aws_security_group" "eks_sg" {
   name        = "eks-sg"
-  description = "Allow TLS inbound traffic and all outbound traffic"
+  description = "sg for eks cluster nodes"
   vpc_id      = aws_vpc.eks_vpc.id
 }
 
